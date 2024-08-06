@@ -1,0 +1,10 @@
+/* Hide scrollbar for Webkit browsers */
+.scroll-container {
+  overflow-y: scroll; /* Ensure scrolling is enabled */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 0; /* Hide scrollbar in Chrome, Safari */
+  background: transparent; /* Optional: To ensure scrollbar background is hidden */
+}
