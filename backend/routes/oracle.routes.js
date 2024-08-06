@@ -15,6 +15,7 @@ import login, { logout, setWorkSpace } from "../controllers/login.js";
 import getUserInfo from "../controllers/getUserInfo.js";
 import isLoggedIn from "../middleware/isLoggedIn.js";
 import getDbUser from "../controllers/getDbUser.js";
+import executeTerminalQuery from "../controllers/executeTerminalQuery.js";
 
 const userRoute = express.Router();
 /*---------------------->>All custom imports<<----------------------*/
@@ -46,5 +47,6 @@ userRoute.post("/set-workspace", setWorkSpace);
 userRoute.get("/get-userinfo", isLoggedIn, getUserInfo);
 userRoute.get("/logout", logout);
 userRoute.get("/get-db-user", getDbUser);
+userRoute.post("/execute-terminal-query", executeTerminalQuery);
 
 export default userRoute;

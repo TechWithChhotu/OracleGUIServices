@@ -110,6 +110,26 @@ const HomePage = () => {
           </Link>
         </div>
       </section>
+
+      {/* SQL Terminal */}
+      <section className="bg-gray-100 text-gray-500 py-10 flex flex-col justify-center items-center text-center">
+        <div className="container mx-auto px-6 py-12">
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
+            Interactive SQL Terminal
+          </h1>
+          <p className="text-lg md:text-xl mb-6">
+            Unlock the full potential of your database with our intuitive SQL
+            Terminal. Write, execute, and visualize your SQL queries
+            effortlessly!
+          </p>
+          <Link
+            to="/sql-terminal"
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg text-lg font-semibold"
+          >
+            Try SQL Terminal
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

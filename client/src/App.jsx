@@ -46,13 +46,24 @@ import { setAuth } from "./store/user.slice";
 import { useDispatch } from "react-redux";
 import GrantPermissionForm from "./components/GrantPermission";
 import CreateDbUserForm from "./components/CreateUser";
+import { AuthProvider } from "./AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="">
       <Route path="" element={<CommanLayout />}>
         <Route path="" element={<Home />} />
-        <Route path="/create-table" element={<CreateTableForm />} />
+        {/* <Route path="/create-table" element={<CreateTableForm />} />
+         */}
+        <Route
+          path="/create-table"
+          element={
+            <ProtectedRoute>
+              <CreateTableForm />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/insert-into-table" element={<InsertDataForm />} />
         <Route path="/view-data" element={<TableDataViewer />} />
         <Route path="/update-table-record" element={<TableDataUpdater />} />
@@ -149,3 +160,4 @@ function App() {
 }
 
 export default App;
+///////////////////////// ==================== THis is the original
