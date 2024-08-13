@@ -93,10 +93,10 @@ const HomePage = () => {
       )}
 
       {/* Doc */}
-      <section className="bg-gray-900 text-white py-12 text-center">
+      <section className="bg-gray-900 text-white py-20 text-center ">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-4">Learn</h2>
-          <p className="text-lg mb-6">
+          <p className="text-lg mb-6 mx-40">
             Discover comprehensive resources and tutorials to master SQL and
             Oracle database management. Whether you're a beginner or looking to
             refine your skills, our documentation has you covered.
@@ -117,7 +117,7 @@ const HomePage = () => {
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
             Interactive SQL Terminal
           </h1>
-          <p className="text-lg md:text-xl mb-6">
+          <p className="text-lg md:text-xl mb-6 mx-40">
             Unlock the full potential of your database with our intuitive SQL
             Terminal. Write, execute, and visualize your SQL queries
             effortlessly!

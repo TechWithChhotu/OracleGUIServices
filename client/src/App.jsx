@@ -64,15 +64,95 @@ const router = createBrowserRouter(
             </ProtectedRoute>
           }
         />
-        <Route path="/insert-into-table" element={<InsertDataForm />} />
-        <Route path="/view-data" element={<TableDataViewer />} />
-        <Route path="/update-table-record" element={<TableDataUpdater />} />
-        <Route path="/delete-from-table" element={<TableDataDeleter />} />
-        <Route path="/truncate-table" element={<TruncateTable />} />
-        <Route path="/drop-table" element={<DropTable />} />
-        <Route path="/alter-table" element={<AlterTable />} />
-        <Route path="/alter-table" element={<AlterTable />} />
-        <Route path="/table-schema-viewer" element={<TableSchemaViewer />} />
+        <Route
+          path="/insert-into-table"
+          element={
+            <ProtectedRoute>
+              <InsertDataForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/view-data"
+          element={
+            <ProtectedRoute>
+              <TableDataViewer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/update-table-record"
+          element={
+            <ProtectedRoute>
+              <TableDataUpdater />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/delete-from-table"
+          element={
+            <ProtectedRoute>
+              <TableDataDeleter />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/truncate-table"
+          element={
+            <ProtectedRoute>
+              <TruncateTable />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/drop-table"
+          element={
+            <ProtectedRoute>
+              <DropTable />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/alter-table"
+          element={
+            <ProtectedRoute>
+              <AlterTable />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/alter-table"
+          element={
+            <ProtectedRoute>
+              <AlterTable />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/table-schema-viewer"
+          element={
+            <ProtectedRoute>
+              <TableSchemaViewer />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/create-db-user"
+          element={
+            <ProtectedRoute>
+              <CreateDbUserForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/grant-permission"
+          element={
+            <ProtectedRoute>
+              <GrantPermissionForm />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/services" element={<Services />} />
         <Route path="/about" element={<About />} />
@@ -81,8 +161,6 @@ const router = createBrowserRouter(
         <Route path="/set-workspace" element={<SetWorkspace />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sql-terminal" element={<SqlTerminal />} />
-        <Route path="/create-db-user" element={<CreateDbUserForm />} />
-        <Route path="/grant-permission" element={<GrantPermissionForm />} />
 
         <Route path="/learn" element={<DocumentationPage />}>
           <Route path="introduction" element={<SQLAndOracleDocumentation />} />
@@ -133,7 +211,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("USE-EFFECT called");
+    console.log("USE-EFFECT called from App");
 
     const fetchData = async () => {
       console.log("fetch data");
@@ -142,6 +220,8 @@ function App() {
         const response = await axios.get("http://localhost:3000/get-userinfo", {
           withCredentials: true,
         });
+        console.log("response.data form App.jsx ===> ");
+
         console.log(response.data);
         if (response) {
           dispatch(setAuth(response.data));

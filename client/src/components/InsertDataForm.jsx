@@ -12,6 +12,8 @@ const InsertDataForm = () => {
     const fetchTables = async () => {
       try {
         const response = await axios.get("http://localhost:3000/get-tables");
+        console.log("InsertDataForm Called");
+
         setTables(response.data.tables);
       } catch (error) {
         console.error("Error fetching tables:", error);
@@ -88,8 +90,8 @@ const InsertDataForm = () => {
           <option value="" disabled>
             Select a table
           </option>
-          {tables.map((table) => (
-            <option key={table} value={table}>
+          {tables.map((table, inde) => (
+            <option key={inde} value={table}>
               {table}
             </option>
           ))}

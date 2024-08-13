@@ -34,9 +34,22 @@ const getUserInfo = async (req, res, next) => {
     const response = await connection.execute(insertUserQuery);
     // console.log(response.rows[0][2]);
     response.rows[0][3] = undefined; //set password undefined
-    res
-      .status(200)
-      .json({ success: true, msg: "You are logged in", data: response.rows });
+
+    if (req.user.workSpacePassword === null) {
+      return res.status(200).json({
+        success: true,
+        msg: "You are logged in",
+        data: response.rows,
+        setWorkSpace: true,
+      });
+    } else {
+      return res.status(200).json({
+        success: true,
+        msg: "You are logged in",
+        data: response.rows,
+        setWorkSpace: false,
+      });
+    }
   } catch (err) {
     console.log(err);
 

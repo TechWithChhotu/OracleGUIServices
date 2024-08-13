@@ -16,6 +16,7 @@ import getUserInfo from "../controllers/getUserInfo.js";
 import isLoggedIn from "../middleware/isLoggedIn.js";
 import getDbUser from "../controllers/getDbUser.js";
 import executeTerminalQuery from "../controllers/executeTerminalQuery.js";
+// import { generateSQLQuery } from "../controllers/generatteSQLQueries.js";
 
 const userRoute = express.Router();
 /*---------------------->>All custom imports<<----------------------*/
@@ -43,10 +44,12 @@ userRoute.post("/create-user", createUser);
 userRoute.post("/get-permission", getPermission);
 userRoute.post("/sign-up", signUp);
 userRoute.post("/login", login);
-userRoute.post("/set-workspace", setWorkSpace);
+userRoute.post("/set-workspace", isLoggedIn, setWorkSpace);
 userRoute.get("/get-userinfo", isLoggedIn, getUserInfo);
 userRoute.get("/logout", logout);
 userRoute.get("/get-db-user", getDbUser);
 userRoute.post("/execute-terminal-query", executeTerminalQuery);
+
+// userRoute.post("generate-sql-query", generateSQLQuery);
 
 export default userRoute;

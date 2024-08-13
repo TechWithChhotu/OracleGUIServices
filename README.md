@@ -26,13 +26,13 @@ This project is a Oracle GUI Services built with React for the frontend and Expr
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/bank-management-system.git
+   git clone https://github.com/TechWithChhotu/OracleGUIServices.git
    ```
 
 2. Navigate to the project directory:
 
    ```sh
-   cd bank-management-system
+   cd OracleGUI
    ```
 
 3. Install frontend dependencies:
@@ -53,23 +53,27 @@ This project is a Oracle GUI Services built with React for the frontend and Expr
 
    ```env
    PORT=3000
-   DB_HOST=your_db_host
-   DB_USER=your_db_user
-   DB_PASSWORD=your_db_password
-   DB_NAME=your_db_name
    ```
+
+ORACLE_USERNAME=username
+ORACLE_PASSWORD=password
+ORACLE_CONNECTION_STRING="localhost/XEPDB1"
+
+JWT_SECRET = "YOUR_SECRET_CODE";
+
+````
 
 6. Start the development servers:
 
-   ```sh
-   # In one terminal, start the backend server
-   cd server
-   npm start
+```sh
+# In one terminal, start the backend server
+cd backend
+npm start
 
-   # In another terminal, start the frontend development server
-   cd client
-   npm start
-   ```
+# In another terminal, start the frontend development server
+cd client
+npm run dev
+````
 
 ## Usage
 

@@ -31,9 +31,17 @@ const login = async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ userId: user[0] }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      {
+        userId: user[0],
+        workSpace: "system",
+        workSpacePassword: null,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "24h",
+      }
+    );
     res.cookie("OracleGUIServices", token, { httpOnly: true });
 
     res.status(200).json({ message: "Login successful" });
@@ -53,6 +61,9 @@ const login = async (req, res) => {
 
 const setWorkSpace = async (req, res) => {
   const { dbUsername, dbPassword } = req.body;
+  const userId = req.user.userId;
+  console.log("userId (setWorkSpace) ==> ", userId);
+
   try {
     const poolConfig = {
       user: dbUsername, //Email-chhotustudymail@gmail.com
@@ -64,7 +75,18 @@ const setWorkSpace = async (req, res) => {
     };
 
     await oracle.createPool(poolConfig);
-
+    const token = jwt.sign(
+      {
+        userId,
+        workSpace: dbUsername,
+        workSpacePassword: dbPassword,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "24h",
+      }
+    );
+    res.cookie("OracleGUIServices", token, { httpOnly: true });
     console.log("Oracle, Connection successful");
     res
       .status(200)
